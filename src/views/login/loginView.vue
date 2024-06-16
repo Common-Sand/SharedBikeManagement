@@ -39,7 +39,6 @@
 import { ref } from "vue";
 import { User, Lock } from "@element-plus/icons-vue";
 import { login } from "@/api/login";
-import axios from "axios";
 
 const formRef = ref(null);
 const form = ref({

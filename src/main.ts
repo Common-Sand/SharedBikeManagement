@@ -6,12 +6,13 @@ import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
 
+axios.defaults.baseURL='/api'
 const app = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);
 }
 const store = createPinia();
-
+app.config.globalProperties.rqst = axios
 app.use(createPinia());
 app.use(VueAxios, axios);
 app.use(router);
