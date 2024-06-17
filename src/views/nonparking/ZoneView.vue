@@ -1,25 +1,24 @@
 <template>
   <div class="common-layout">
     <el-container class="app-wrapper">
-      <el-aside width="200px" class="sidebar-container">
-        <Menu/>
+      <el-aside width="210px" class="sidebar-container">
+        <Menu />
       </el-aside>
       <el-container class="container">
-        <el-header class="header">Header</el-header>
-        <el-main class="main">       
-          查看禁停区
-        </el-main>
+        <el-header class="header"><Header></Header></el-header>
+        <el-main class="main"> 查看禁停区 </el-main>
       </el-container>
     </el-container>
-  </div>    
+  </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import Menu from "@/layout/Menu/Aside.vue";
+import Header from "@/layout/Header/header.vue";
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 .app-container {
   position: relative;
   width: 100%;

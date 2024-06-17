@@ -25,12 +25,12 @@ export default defineConfig({
     hmr: true,
     proxy: {
       "/api": {
-        target: "http://localhost:8008",
+        target: process.env.VUE_APP_BASE_API,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
-    port: 8008,
+    port: 3000,
     host: "0.0.0.0",
     cors: true,
   },

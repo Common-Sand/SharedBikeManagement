@@ -10,8 +10,8 @@
     "test:unit": "vitest",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
-    "build:dev":"vite build --mode development",
-    "build:prod":"vite build --mode production"
+    "build:dev": "vite build --mode development",
+    "build:prod": "vite build --mode production"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -21,7 +21,8 @@
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
     "vue-axios": "^3.5.2",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",

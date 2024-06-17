@@ -1,11 +1,11 @@
 <template>
   <div class="common-layout">
     <el-container class="app-wrapper">
-      <el-aside width="200px" class="sidebar-container">
+      <el-aside width="210px" class="sidebar-container">
         <Menu/>
       </el-aside>
       <el-container class="container">
-        <el-header class="header">Header</el-header>
+        <el-header class="header"><Header></Header></el-header>
         <el-main class="main">       
           用户个人中心
         </el-main>
@@ -17,6 +17,13 @@
 <script setup>
 import { ref } from "vue";
 import Menu from "@/layout/Menu/Aside.vue";
+import Header from "@/layout/Header/header.vue";
+
+const form = reactive({
+  avatar: '', // 用户头像的URL
+  nickName: '',
+  password: ''
+})
 </script>
 
 <style lang="scss" >

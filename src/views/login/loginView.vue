@@ -42,8 +42,8 @@ import { login } from "@/api/login";
 
 const loginFormRef = ref(null);
 const form = ref({
-  username: "",
-  password: "",
+  username: "admin",
+  password: "123456",
 });
 
 const rules = ref({
