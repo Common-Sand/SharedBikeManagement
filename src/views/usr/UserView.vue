@@ -7,7 +7,7 @@
       <el-container class="container">
         <el-header class="header">Header</el-header>
         <el-main class="main">       
-          主页
+          用户个人中心
         </el-main>
       </el-container>
     </el-container>

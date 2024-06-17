@@ -22,6 +22,40 @@ const router = createRouter({
       name: "home",
       component: () => import("@/layout/HomeView.vue"),
     },
+    {
+      path: "/riders",
+      name: "riders",
+      component: () => import("@/views/riders/RidersView.vue"),
+    },
+    {
+      path: "/bikes",
+      name: "bikes",
+      component: () => import("@/views/bikes/BikesView.vue"),
+    },
+    {
+      path: "/user",
+      name: "user",
+      component: () => import("@/views/usr/UserView.vue"),
+    },
+    {
+      path: "/record",
+      name: "record",
+      component: () => import("@/views/record/RecordView.vue"),
+    },
+    {
+      path: "/chart",
+      name: "chart",
+      component: () => import("@/views/chart/ChartView.vue"),
+    },
+    {
+      path: "/map",
+      name: "map",
+      component: () => import("@/views/map/MapView.vue"),
+    },{
+      path: "/zone",
+      name: "zone",
+      component: () => import("@/views/nonparking/ZoneView.vue"),
+    },
   ],
 });
 router.beforeEach((to, from, next) => {

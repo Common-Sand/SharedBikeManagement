@@ -7,7 +7,7 @@
       <el-container class="container">
         <el-header class="header">Header</el-header>
         <el-main class="main">       
-          主页
+          图表分析
         </el-main>
       </el-container>
     </el-container>

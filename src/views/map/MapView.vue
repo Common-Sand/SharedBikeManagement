@@ -7,7 +7,7 @@
       <el-container class="container">
         <el-header class="header">Header</el-header>
         <el-main class="main">       
-          主页
+          查看地图
         </el-main>
       </el-container>
     </el-container>
