@@ -1,6 +1,6 @@
 <template>
   <div class="register-container">
-    <el-form class="register-form" ref="formRef" :model="form" :rules="rules">
+    <el-form class="register-form" ref="registerFormRef" :model="form" :rules="rules">
       <div class="title-container">
         <h3 class="title">用户注册</h3>
       </div>
@@ -44,7 +44,7 @@
 import { ref } from "vue";
 import { User, Lock, Unlock, Back } from "@element-plus/icons-vue";
 
-const formRef = ref(null);
+const registerFormRef = ref(null);
 const form = ref({
   username: "",
   password: "",
@@ -65,6 +65,12 @@ const rules = ref({
       message: "请输入密码",
       trigger: "blur",
     },
+    {
+      min: 6,
+      max: 20,
+      message: "长度在6到20字符之间",
+      trgger: "blur",
+    },
   ],
   pwdCheck: [
     {
@@ -72,11 +78,17 @@ const rules = ref({
       message: "请确认密码",
       trigger: "blur",
     },
+    {
+      min: 6,
+      max: 20,
+      message: "长度在6到20字符之间",
+      trgger: "blur",
+    },
   ],
 });
 
 const handleRegister = async () => {
-  formRef.value.validate((valid) => {
+  registerFormRef.value.validate((valid) => {
     if (valid) {
       alert("submit!");
       //   login(form.value)
@@ -86,7 +98,6 @@ const handleRegister = async () => {
     }
   });
 };
-
 </script>
 
 <style lang="scss">
@@ -94,6 +105,7 @@ $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
 $cursor: #fff;
+$black: #fff;
 
 .register-container {
   margin: 0 auto;
@@ -119,16 +131,17 @@ $cursor: #fff;
 
     ::v-deep .el-input {
       display: inline-block;
-      height: 62px;
-      width: 85%;
+      height: 35px;
+      width: 100%;
 
       input {
         background: transparent;
         border: 0px;
         border-radius: 0px;
         padding: 12px 5px 12px 15px;
-        color: $light_gray;
-        height: 62px;
+        -webkit-appearance: none;
+        color: $black;
+        height: 35px;
         caret-color: $cursor;
       }
     }
