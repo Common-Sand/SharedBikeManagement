@@ -1,6 +1,11 @@
 <template>
   <div class="register-container">
-    <el-form class="register-form" ref="registerFormRef" :model="form" :rules="rules">
+    <el-form
+      class="register-form"
+      ref="registerFormRef"
+      :model="form"
+      :rules="rules"
+    >
       <div class="title-container">
         <h3 class="title">用户注册</h3>
       </div>
@@ -43,7 +48,9 @@
 <script setup>
 import { ref } from "vue";
 import { User, Lock, Unlock, Back } from "@element-plus/icons-vue";
+import { register } from "@/api/register.ts"
 
+// console.log(register);
 const registerFormRef = ref(null);
 const form = ref({
   username: "",
@@ -88,10 +95,10 @@ const rules = ref({
 });
 
 const handleRegister = async () => {
-  registerFormRef.value.validate((valid) => {
+  registerFormRef.value.validate(async (valid) => {
     if (valid) {
-      alert("submit!");
-      //   login(form.value)
+      console.log(form.value);
+      await register(form.username,form.password);
     } else {
       console.log("error submit!!");
       return false;

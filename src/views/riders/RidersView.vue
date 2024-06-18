@@ -82,7 +82,7 @@ const queryForm = ref({
   query: "",
   pagenum: 10,
 });
-const total = ref(15);
+const total = ref(4);
 const showButton = ref(false);
 // const initGetRidersList = async()=>{
 //   const res = await getRider(queryForm.value)

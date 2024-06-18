@@ -4,7 +4,7 @@ import { useTokenAndRoleStore } from "@/stores/tokenAndRole";
 import { ElMessage } from "element-plus";
 // import { useTokenAndRoleStore } from '@/stores/tokenAndRole'
 const request = axios.create({
-  baseURL: "",
+  baseURL: "localhost:8080/api",
   timeout: 5000,
 });
 
@@ -20,4 +20,6 @@ request.interceptors.request.use((config) => {
 
   return config;
 });
+
+// request.interceptors.response.use((response) => {});
 export default request;

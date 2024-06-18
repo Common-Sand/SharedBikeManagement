@@ -70,7 +70,7 @@ import { ref } from "vue";
 import Menu from "@/layout/Menu/Aside.vue";
 import Header from "@/layout/Header/header.vue";
 import { Search } from "@element-plus/icons-vue";
-import { options } from "@/views/bikes/options.js";
+import { options } from "@/views/record/options.js";
 const total = ref(0);
 const showButton = ref(false);
 const queryForm = ref({
