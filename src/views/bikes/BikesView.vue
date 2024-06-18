@@ -21,7 +21,7 @@
             </el-row>
             <el-table
               :data="tableData"
-              :default-sort="{ prop: 'username', order: 'accending' }"
+              :default-sort="{ prop: 'bike_id', order: 'accending' }"
               border
               style="width: 100%"
               class="riderTable"
