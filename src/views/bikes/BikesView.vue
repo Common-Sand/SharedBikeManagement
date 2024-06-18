@@ -16,8 +16,8 @@
                   v-model="queryForm.query"
                 ></el-input>
               </el-col>
-              <el-button type="primary" :icon="Search">搜索</el-button>
-              <el-button type="primary" v-if="showButton">添加单车</el-button>
+              <el-button type="primary" :icon="Search" @click="initBikeList">搜索</el-button>
+              <el-button type="primary" v-if="showButton" @click="AddBike">添加单车</el-button>
             </el-row>
             <el-table
               :data="tableData"
