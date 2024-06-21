@@ -1,12 +1,18 @@
 import request from "@/api/request";
+import qs from "qs";
 
-export const register = (username: any, password: any) => {
+export const register = (data) => {
   return request({
     method: "POST",
-    url: "/register",
+    url: "/user/register",
+    // transformRequest: [
+    //   function (data) {
+    //     return qs.stringify(data);
+    //   },
+    // ],
     data: {
-      username: username,
-      password: password,
+      username: data.username,
+      password: data.password,
     },
   });
 };

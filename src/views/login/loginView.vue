@@ -39,6 +39,7 @@
 import { ref } from "vue";
 import { User, Lock } from "@element-plus/icons-vue";
 import { login } from "@/api/login";
+import { ElMessage } from "element-plus";
 
 const loginFormRef = ref(null);
 const form = ref({
@@ -74,7 +75,14 @@ const handleLogin = async () => {
     if (valid) {
       // alert("submit!");
       console.log(form.value);
-      await login(form.value);
+      let res = await login(form.value);
+      console.log(res);
+      let result = res.data;
+      if (result.code === 200){
+        ElMessage.success(result.message ? result.message:'登录成功');
+      }else{
+        ElMessage.error(result.message);
+      }
     } else {
       console.log("error submit!!");
       return false;

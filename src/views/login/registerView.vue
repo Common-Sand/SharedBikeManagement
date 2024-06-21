@@ -48,8 +48,9 @@
 <script setup>
 import { ref } from "vue";
 import { User, Lock, Unlock, Back } from "@element-plus/icons-vue";
-import { register } from "@/api/register.ts"
-
+import { register } from "@/api/register.ts";
+import qs from "qs";
+import { ElMessage } from "element-plus";
 // console.log(register);
 const registerFormRef = ref(null);
 const form = ref({
@@ -58,12 +59,32 @@ const form = ref({
   pwdCheck: "",
 });
 
+// 密码校验函数
+const checkRePassword = (rule, value, callback) => {
+  if (value === "") {
+    callback(new Error("请再次确认密码"));
+  } else if (value.length < 6 || value.length > 20) {
+    callback(new Error("长度在6到20字符之间"));
+  } else if (value !== form.value.password) {
+    callback(new Error("两次输入的密码不相同"));
+  } else {
+    callback();
+  }
+};
+
+// 表单校验规则
 const rules = ref({
   username: [
     {
       required: true,
       message: "请输入用户名",
       trigger: "blur",
+    },
+    {
+      min: 1,
+      max: 18,
+      message: "长度在1到18字符之间",
+      trgger: "blur",
     },
   ],
   password: [
@@ -76,20 +97,13 @@ const rules = ref({
       min: 6,
       max: 20,
       message: "长度在6到20字符之间",
-      trgger: "blur",
+      trigger: "blur",
     },
   ],
   pwdCheck: [
     {
-      required: true,
-      message: "请确认密码",
+      validator: checkRePassword,
       trigger: "blur",
-    },
-    {
-      min: 6,
-      max: 20,
-      message: "长度在6到20字符之间",
-      trgger: "blur",
     },
   ],
 });
@@ -98,7 +112,14 @@ const handleRegister = async () => {
   registerFormRef.value.validate(async (valid) => {
     if (valid) {
       console.log(form.value);
-      await register(form.username,form.password);
+      let res = await register(form.value);
+      let result = res.data;
+      console.log(result);
+      if (result.code === 200) {
+        ElMessage.success(result.message ? result.message : "注册成功");
+      } else {
+        ElMessage.error("注册失败");
+      }
     } else {
       console.log("error submit!!");
       return false;

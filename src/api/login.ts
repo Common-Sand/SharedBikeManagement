@@ -1,12 +1,12 @@
 import request from "@/api/request";
 
-export const login = (username: any, password: any) => {
+export const login = (data) => {
   return request({
     method: "POST",
-    url: "/login",
+    url: "/user/login",
     data: {
-      username: username,
-      password: password,
+      username: data.username,
+      password: data.password,
     },
   });
 };
