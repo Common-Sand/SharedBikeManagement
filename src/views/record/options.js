@@ -1,18 +1,23 @@
 export const options = [
     {
         label: '记录编号',
-        prop: 'record_id',
-        sortable: true
-    },
-    {
-        label: '单车编号',
-        prop: 'bike_id',
+        prop: 'id',
         sortable: true
     },
     {
         label: '骑行者编号',
-        prop: 'location_x',
+        prop: 'rid',
         sortable: true
+    },
+    {
+        label: '单车编号',
+        prop: 'bid',
+        sortable: true
+    },
+    {
+        label: '订单状态',
+        prop: 'status',
+        sortable: false
     },
     {
         label: '起始时间',

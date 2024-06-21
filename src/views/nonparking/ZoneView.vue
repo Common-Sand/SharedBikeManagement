@@ -16,15 +16,14 @@
                   v-model="queryForm.query"
                 ></el-input>
               </el-col>
-              <el-button type="primary" :icon="Search">搜索</el-button>
-              <el-button type="primary" v-if="showButton">添加禁停区</el-button>
+              <el-button type="primary" :icon="Search" @click="initGetZoneList">搜索</el-button>
+              <el-button type="primary" @click="$router.push({ name: 'map' })">添加禁停区</el-button>
             </el-row>
             <el-table
               :data="tableData"
-              :default-sort="{ prop: 'username', order: 'accending' }"
               border
               style="width: 100%"
-              class="riderTable"
+              class="ZoneTable"
             >
               <el-table-column
                 :prop="item.prop"
@@ -41,7 +40,7 @@
                     link
                     type="primary"
                     size="small"
-                    @click.prevent="hello(scope.$index)"
+                    @click.prevent="$router.push({name:'map'})"
                   >
                     查看详情
                   </el-button>
@@ -50,9 +49,9 @@
             </el-table>
             <el-pagination
               class="pagination"
-              v-model:current-page="queryForm.pagenum"
-              v-model:page-size="pageSize4"
-              :page-sizes="[10, 20, 35, 50]"
+              v-model:current-page="queryForm.pageNum"
+              v-model:page-size="pageSize"
+              :page-sizes="[5, 10, 15, 20]"
               background="background"
               layout="total, sizes, prev, pager, next, jumper"
               :total="total"
@@ -72,12 +71,39 @@ import Menu from "@/layout/Menu/Aside.vue";
 import Header from "@/layout/Header/header.vue";
 import { Search } from "@element-plus/icons-vue";
 import { options } from "@/views/nonparking/options.js";
-const total = ref(0);
-const showButton = ref(false);
+import { useRoute } from "vue-router";
+import { getZones } from "@/api/zone";
+
+const pageNum = ref(1);
+const total = ref(1);
+const pageSize = ref(5);
+
+const tableData = ref();
+
+const initGetZoneList = async () => {
+  let params = {
+    pageNum: pageNum.value,
+    pageSize: pageSize.value,
+    id: queryForm.value.query?queryForm.value.query:null
+  };
+  let res = await getZones(params);
+  total.value = res.data.total;
+  tableData.value = res.data.items;
+  console.log(res);
+};
+const handleSizeChange = (size) => {
+  pageSize.value = size;
+  initGetZoneList()
+};
+const handleCurrentChange = (num) => {
+  pageNum.value = num;
+  initGetZoneList()
+};
 const queryForm = ref({
-  query: "",
-  pagenum: 10,
+  query:'',
+  pageNum:''
 });
+initGetZoneList()
 </script>
 
 <style lang="scss">

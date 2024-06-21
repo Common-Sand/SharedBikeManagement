@@ -51,6 +51,8 @@ import { User, Lock, Unlock, Back } from "@element-plus/icons-vue";
 import { register } from "@/api/register.ts";
 import qs from "qs";
 import { ElMessage } from "element-plus";
+import { useRouter } from "vue-router";
+const route = useRouter();
 // console.log(register);
 const registerFormRef = ref(null);
 const form = ref({
@@ -112,14 +114,8 @@ const handleRegister = async () => {
   registerFormRef.value.validate(async (valid) => {
     if (valid) {
       console.log(form.value);
-      let res = await register(form.value);
-      let result = res.data;
-      console.log(result);
-      if (result.code === 200) {
-        ElMessage.success(result.message ? result.message : "注册成功");
-      } else {
-        ElMessage.error("注册失败");
-      }
+      await register(form.value);
+      route.push("/login");
     } else {
       console.log("error submit!!");
       return false;

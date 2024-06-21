@@ -1,10 +1,11 @@
 import request from "@/api/request";
 import { useTokenStore } from "@/stores/token";
 
-export const getRiderList = () => {
+export const getZones = (params) => {
+  const token = useTokenStore();
+
   return request({
-    method:"GET",
-    url: "/riders",
-    
+    url: "/zone",
+    params,
   });
 };

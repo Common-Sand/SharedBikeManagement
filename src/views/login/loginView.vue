@@ -40,11 +40,14 @@ import { ref } from "vue";
 import { User, Lock } from "@element-plus/icons-vue";
 import { login } from "@/api/login";
 import { ElMessage } from "element-plus";
-
+import { useRouter } from "vue-router";
+import { useTokenStore } from "@/stores/token";
+const route = useRouter();
+const tokenStore = useTokenStore();
 const loginFormRef = ref(null);
 const form = ref({
-  username: "admin",
-  password: "123456",
+  username: "",
+  password: "",
 });
 
 const rules = ref({
@@ -74,15 +77,11 @@ const handleLogin = async () => {
   loginFormRef.value.validate(async (valid) => {
     if (valid) {
       // alert("submit!");
-      console.log(form.value);
-      let res = await login(form.value);
-      console.log(res);
-      let result = res.data;
-      if (result.code === 200){
-        ElMessage.success(result.message ? result.message:'登录成功');
-      }else{
-        ElMessage.error(result.message);
-      }
+      // console.log(form.value);
+      let result = await login(form.value);
+      // console.log(result)
+      tokenStore.setToken(result.data);
+      route.push("/");
     } else {
       console.log("error submit!!");
       return false;

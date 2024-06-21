@@ -1,33 +1,28 @@
 export const options = [
     {
         label: '单车编号',
-        prop: 'bike_id',
+        prop: 'id',
         sortable: true
     },
     {
         label: '投放时间',
-        prop: 'deployment_time',
+        prop: 'deployTime',
         sortable: true
     },
     {
         label: '经度',
-        prop: 'location_x',
+        prop: 'locationX',
         sortable:true
     },
     {
         label: '纬度',
-        prop: 'location_y',
+        prop: 'locationY',
         sortable:true
     },
     {
         label: '状态',
         prop: 'status',
         sortable:false
-    },
-    {
-        label: '保修时长',
-        prop: 'warranty_duration',
-        sortable:true
     },
 
 ]

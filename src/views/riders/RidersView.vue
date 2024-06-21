@@ -16,13 +16,16 @@
                   v-model="queryForm.query"
                 ></el-input>
               </el-col>
-              <el-button type="primary" :icon="Search">搜索</el-button>
+              <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
               <el-button type="primary" v-if="showButton">添加骑手</el-button>
+              <el-form-item class="resetbutton">
+                <el-button @click="status='';queryForm.query='';">重置</el-button>
+              </el-form-item>
             </el-row>
 
             <el-table
               :data="tableData"
-              :default-sort="{ prop: 'username', order: 'accending' }"
+              :default-sort="{ prop: 'rider_id', order: 'accending' }"
               border
               style="width: 100%"
               class="riderTable"
@@ -77,6 +80,8 @@ import Menu from "@/layout/Menu/Aside.vue";
 import Header from "@/layout/Header/header.vue";
 import { Search } from "@element-plus/icons-vue";
 import { options } from "@/views/riders/options.js";
+import { useRoute } from "vue-router";
+const route=useRoute();
 // import {riders} from "@/api/riders.ts"
 const queryForm = ref({
   query: "",

@@ -13,23 +13,23 @@
         <span>主页</span>
       </template>
     </el-sub-menu> -->
-    <el-menu-item index="1" @click="router.push({ name: 'home' })">
+    <el-menu-item index="/" @click="router.push({ name: 'home' })">
       <el-icon><House /></el-icon>
       <span>主页</span>
     </el-menu-item>
-    <el-menu-item index="2" @click="router.push({ name: 'user' })">
+    <el-menu-item index="/user" @click="router.push({ name: 'user' })">
       <el-icon><User /></el-icon>
       <span>个人中心</span>
     </el-menu-item>
-    <el-menu-item index="3" @click="router.push({ name: 'riders' })">
+    <el-menu-item index="/riders" @click="router.push({ name: 'riders' })">
       <el-icon><UserFilled /></el-icon>
       <span>查看骑行者</span>
     </el-menu-item>
-    <el-menu-item index="4" @click="router.push({ name: 'bikes' })">
+    <el-menu-item index="/bikes" @click="router.push({ name: 'bikes' })">
       <el-icon><Bicycle /></el-icon>
       <span>查看单车</span>
     </el-menu-item>
-    <el-menu-item index="5" @click="router.push({ name: 'record' })">
+    <el-menu-item index="/record" @click="router.push({ name: 'record' })">
       <el-icon><Odometer /></el-icon>
       <span>查看骑行记录</span>
     </el-menu-item>

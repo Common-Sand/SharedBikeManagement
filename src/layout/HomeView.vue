@@ -7,7 +7,7 @@
       <el-container class="container">
         <el-header class="header"><Headers /> </el-header>
         <el-main class="main">
-          <iframe :src="src" frameborder="0" style="width: 100%;height:100"></iframe>
+          <RouterView></RouterView>
         </el-main>
       </el-container>
     </el-container>
@@ -18,8 +18,8 @@
 import { ref } from "vue";
 import Menu from "@/layout/Menu/Aside.vue";
 import Headers from "@/layout/Header/header.vue";
-const html = ref("@/views/wage_avg_exp.html");
-const src="/views/wage_avg_exp.html";
+
+
 </script>
 
 <style lang="scss">
